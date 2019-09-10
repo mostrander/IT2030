@@ -1,0 +1,22 @@
+﻿body
+{
+    font-family: 'Times New Roman', Times, serif;
+    height: 100%;
+    width: 100%;
+}
+
+h1 
+{
+    background-color: aqua;
+    height: 12.5%;
+}
+
+main
+{
+    height: 75%;
+}
+
+footer
+{
+    height: 12.5%;
+}
