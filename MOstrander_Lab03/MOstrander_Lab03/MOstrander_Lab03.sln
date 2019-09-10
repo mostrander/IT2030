@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MOstrander_Lab03", "MOstrander_Lab03\MOstrander_Lab03.csproj", "{D0EB4E00-D685-4BB8-8AEE-7C8BC19FD626}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MOstrander_Lab03.Tests", "MOstrander_Lab03.Tests\MOstrander_Lab03.Tests.csproj", "{C9DB18A3-AADD-490C-B1D5-F0DE1F6EEB4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0EB4E00-D685-4BB8-8AEE-7C8BC19FD626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0EB4E00-D685-4BB8-8AEE-7C8BC19FD626}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0EB4E00-D685-4BB8-8AEE-7C8BC19FD626}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0EB4E00-D685-4BB8-8AEE-7C8BC19FD626}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9DB18A3-AADD-490C-B1D5-F0DE1F6EEB4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9DB18A3-AADD-490C-B1D5-F0DE1F6EEB4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9DB18A3-AADD-490C-B1D5-F0DE1F6EEB4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9DB18A3-AADD-490C-B1D5-F0DE1F6EEB4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {914B7725-4AE6-4929-8D46-9FBD601C33B7}
+	EndGlobalSection
+EndGlobal
