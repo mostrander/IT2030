@@ -31,9 +31,9 @@ namespace MVCMusicStoreApplication.Controllers
             Album album = db.Albums.Find(id);
             if (album == null)
             {
-                return HttpNotFound();
+                return HttpNotFound(); //album not found
             }
-            return View(album);
+            return View(album); //if album is found, display
         }
 
         // GET: StoreManager/Create
@@ -54,10 +54,10 @@ namespace MVCMusicStoreApplication.Controllers
             if (ModelState.IsValid)
             {
                 db.Albums.Add(album);
-                db.SaveChanges();
+                db.SaveChanges(); //save new data to database
                 return RedirectToAction("Index");
             }
-
+            //if not valid, refresh page with user selected fields
             ViewBag.ArtistId = new SelectList(db.Artists, "ArtistId", "Name", album.ArtistId);
             ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name", album.GenreId);
             return View(album);
