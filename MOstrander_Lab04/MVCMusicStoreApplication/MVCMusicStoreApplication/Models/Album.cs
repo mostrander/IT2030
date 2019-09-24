@@ -16,5 +16,9 @@ namespace MVCMusicStoreApplication.Models
         public virtual Artist Artist { get; set; }
         public virtual string AlbumArtUrl {get;set;}
         public virtual string AdditionalInfo { get; set; }
+
+        public virtual string CountryOfOrigin { get; set; }
+        public virtual Boolean InStock { get; set; }
+
     }
 }
