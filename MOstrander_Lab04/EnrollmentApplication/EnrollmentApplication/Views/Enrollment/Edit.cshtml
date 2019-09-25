@@ -55,9 +55,9 @@
     <div class="form-group">
         @Html.LabelFor(model => model.EnrollmentSemester, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.RadioButtonFor(model => model.EnrollmentSemester, "Spring")
-            @Html.RadioButtonFor(model => model.EnrollmentSemester, "Summer")
-            @Html.RadioButtonFor(model => model.EnrollmentSemester, "Fall")
+            @Html.RadioButtonFor(model => model.EnrollmentSemester, "Spring") Spring
+            @Html.RadioButtonFor(model => model.EnrollmentSemester, "Summer") Summer
+            @Html.RadioButtonFor(model => model.EnrollmentSemester, "Fall") Fall
             @Html.ValidationMessageFor(model => model.EnrollmentSemester, "", new { @class = "text-danger" })
         </div>
     </div>
