@@ -14,7 +14,7 @@ namespace EnrollmentApplication.Models
       public virtual int CourseId { get; set; }
 
       [Required (ErrorMessage = "Please enter a grade.")]
-      [RegularExpression(@"[A - F]", ErrorMessage = "Grade must be A - F.")]
+      [RegularExpression(@"[A, B, C, D, E, F]", ErrorMessage = "Grade must be A - F.")]
       public virtual String Grade { get; set; }
 
       public virtual Student Student { get; set; }
