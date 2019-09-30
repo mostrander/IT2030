@@ -11,13 +11,13 @@ namespace EnrollmentApplication.Models
       [Display(Name = "Student ID")]
       public virtual int StudentId { get; set; }
 
-      [Required]
-      [StringLength(50)]
+      [Required(ErrorMessage = "Please enter last name.")]
+      [StringLength(50, ErrorMessage = "Last name is too long.")]
       [Display(Name = "Last Name")]
       public virtual string LastName { get; set; }
 
-      [Required]
-      [StringLength(50)]
+      [Required(ErrorMessage = "Please enter first name")]
+      [StringLength(50, ErrorMessage = "First name is too long.")]
       [Display(Name = "First Name")]
       public virtual string FirstName { get; set; }
 
