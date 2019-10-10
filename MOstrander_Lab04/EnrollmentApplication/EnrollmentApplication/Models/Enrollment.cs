@@ -33,5 +33,11 @@ namespace EnrollmentApplication.Models
       [Range(2018, 2025, ErrorMessage = "Enrollment year must be between 2018 - 2025.")]
       public virtual int EnrollmentYear { get; set; }
 
+
+      //lab 7 additions
+
+      public virtual String Notes { get; set; }
+
+
    }
 }

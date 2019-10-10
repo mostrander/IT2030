@@ -24,5 +24,8 @@ namespace EnrollmentApplication.Models
       [Range(1,4, ErrorMessage = "Credits must be between 1 - 4.")]
       public virtual int CourseCredits { get; set; }
 
+
+      public virtual String InstructorName { get; set; }
+
    }
 }
