@@ -35,7 +35,7 @@ namespace EnrollmentApplication.Models
 
 
       //lab 7 additions
-
+      [InvalidChars("*")]
       public virtual String Notes { get; set; }
 
 
