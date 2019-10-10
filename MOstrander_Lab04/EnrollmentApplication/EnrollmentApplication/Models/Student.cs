@@ -44,13 +44,13 @@ namespace EnrollmentApplication.Models
          }
 
          //check address 1 != address2
-         if (Address2.Equals(Address1))
+         if (Address1.Equals(Address2))
          {
             yield return (new ValidationResult("Address 2 cannot be the same as Address 1."));
          }
 
 
-         throw new NotImplementedException();
+         //throw new NotImplementedException();
       }
    }
 }
