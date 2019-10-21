@@ -136,6 +136,7 @@ namespace EnrollmentApplication.Controllers
 
 
       //Added methods for lab 9 ajax
+      //for searching database of students
       public ActionResult StudentSearch(string q)
       {
          var students = GetStudents(q);
@@ -151,5 +152,24 @@ namespace EnrollmentApplication.Controllers
             .ToList();
       }
 
-    }
+
+      //For searching available courses
+      public ActionResult CourseSearch(string q)
+      {
+         var courses = GetCourses(q);
+
+         return PartialView("_CourseSearch", courses); //explicit pass of view
+      }
+
+      private List<Course> GetCourses(string searchString)
+      {
+         return db.Courses
+            .Where(a => a.CourseTitle.Contains(searchString)) 
+            .OrderBy(a => a.CourseTitle)
+            .ToList();
+      }
+
+
+
+   }
 }

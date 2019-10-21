@@ -21,11 +21,11 @@
                UpdateTargetId = "searchresults",
            }))
         {
-           <input type="text" name="q" />
-           <input type="submit" value="search" />
-           <img id="ajax-loader"
-                src="@Url.Content("~/Images/ajax-loader.gif")"
-                style="display:none" />
+            <input type="text" name="q" />
+            <input type="submit" value="search" />
+            <img id="ajax-loader"
+                 src="@Url.Content("~/Images/ajax-loader.gif")"
+                 style="display:none" />
         }
         <div id="searchresults"></div>
     </div>
@@ -94,46 +94,48 @@
 
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Course.CourseTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Student.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Grade)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.CourseTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade)
+            </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.AssignedCampus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EnrollmentSemester)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EnrollmentYear)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Notes)
-        </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssignedCampus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentSemester)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
 
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.EnrollmentId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.EnrollmentId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.EnrollmentId })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EnrollmentId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EnrollmentId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EnrollmentId })
+            </td>
+        </tr>
+    }
 
 </table>
 
 @section Scripts
     {
-        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-        <script src="~/Scripts/Apps/EnrollmentScripts.js"></script>
-    }
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/Apps/EnrollmentScripts.js"></script>
+}
