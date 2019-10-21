@@ -123,5 +123,30 @@ namespace EnrollmentApplication.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+
+        //Added methods for lab 9 Ajax 
+        //remember to create partial view!!
+        public ActionResult StudentOfTheMonth()
+         {
+            var student = GetStudentOfTheMonth();
+
+            return PartialView("_MonthlyStudent", student);
+
+         }
+
+         //select a random student
+         //need to use "db" not "EnrollmentDB" to get to correct data
+        
+         private object GetStudentOfTheMonth()
+         {
+            var student = db.Students
+            .OrderBy(a => System.Guid.NewGuid())
+            .First();
+
+            return student;
+         }
+
     }
 }

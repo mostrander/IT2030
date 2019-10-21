@@ -6,6 +6,61 @@
 
 <h2>Index</h2>
 
+
+<div class="panel panel-StudentSearch">
+    <div class="panel-heading">Student search</div>
+
+    <div class="panel-body">
+        @using (Ajax.BeginForm("StudentSearch", "Enrollment",
+           new AjaxOptions
+           {
+               InsertionMode = InsertionMode.Replace,
+               HttpMethod = "GET",
+               OnFailure = "searchFailed",
+               LoadingElementId = "ajax-loader",
+               UpdateTargetId = "searchresults",
+           }))
+        {
+           <input type="text" name="q" />
+           <input type="submit" value="search" />
+           <img id="ajax-loader"
+                src="@Url.Content("~/Images/ajax-loader.gif")"
+                style="display:none" />
+        }
+        <div id="searchresults"></div>
+    </div>
+</div>
+
+
+
+<div class="panel panel-CourseSearch">
+    <div class="panel-heading">Course search</div>
+
+    <div class="panel-body">
+        @using (Ajax.BeginForm("CourseSearch", "Enrollment",
+           new AjaxOptions
+           {
+               InsertionMode = InsertionMode.Replace,
+               HttpMethod = "GET",
+               OnFailure = "searchFailed",
+               LoadingElementId = "ajax-loader",
+               UpdateTargetId = "searchresults",
+           }))
+        {
+            <input type="text" name="q" />
+            <input type="submit" value="search" />
+            <img id="ajax-loader"
+                 src="@Url.Content("~/Images/ajax-loader.gif")"
+                 style="display:none" />
+        }
+        <div id="searchresults"></div>
+    </div>
+</div>
+
+
+
+
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -76,3 +131,9 @@
 }
 
 </table>
+
+@section Scripts
+    {
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+        <script src="~/Scripts/Apps/EnrollmentScripts.js"></script>
+    }

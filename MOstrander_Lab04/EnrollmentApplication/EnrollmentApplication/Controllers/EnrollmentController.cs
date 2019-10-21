@@ -132,5 +132,24 @@ namespace EnrollmentApplication.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+
+      //Added methods for lab 9 ajax
+      public ActionResult StudentSearch(string q)
+      {
+         var students = GetStudents(q);
+
+         return PartialView("_StudentSearch", students); //explicit pass of view
+      }
+
+      private List<Student> GetStudents(string searchString)
+      {
+         return db.Students
+            .Where(a => a.LastName.Contains(searchString))
+            .OrderBy(a => a.LastName)
+            .ToList();
+      }
+
     }
 }

@@ -1,0 +1,17 @@
+﻿@model EnrollmentApplication.Models.Student
+
+<div class="panel panel-student">
+    <div class="panel-heading">
+        <h3 class="panel-title">Student of the Month</h3>
+    </div>
+</div>
+<div class="panel-body">
+    <p>
+        <em>Student: </em>
+        @Model.FirstName
+        @Model.LastName
+    </p>
+
+    @Html.ActionLink("Student of the Month", "StudentOfTheMonth",
+        new { @class = "btn btn-student"})
+</div>

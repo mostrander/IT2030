@@ -1,0 +1,16 @@
+﻿@model IEnumerable<EnrollmentApplication.Models.Student>
+
+<div id="searchresults">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item.LastName, @item.FirstName</li>
+        }
+    </ul>
+</div>
+
+@section Scripts
+    {
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/Apps/EnrollmentScripts.js"></script>
+}
