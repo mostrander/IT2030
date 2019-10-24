@@ -12,6 +12,14 @@
         @Model.LastName
     </p>
 
-    @Html.ActionLink("Student of the Month", "StudentOfTheMonth",
-        new { @class = "btn btn-student"})
+    @Ajax.ActionLink("Student of the Month",
+            "StudentOfTheMonth",
+            null,
+            new AjaxOptions
+            {
+                UpdateTargetId="MonthlyStudent",
+                InsertionMode = InsertionMode.Replace,
+                HttpMethod = "GET"
+            },
+            new {@class = "btn btn-student" })
 </div>

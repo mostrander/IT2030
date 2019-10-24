@@ -147,7 +147,7 @@ namespace EnrollmentApplication.Controllers
       private List<Student> GetStudents(string searchString)
       {
          return db.Students
-            .Where(a => a.LastName.Contains(searchString))
+            .Where(a => a.FirstName.Contains(searchString) || a.LastName.Contains(searchString))
             .OrderBy(a => a.LastName)
             .ToList();
       }
@@ -164,7 +164,7 @@ namespace EnrollmentApplication.Controllers
       private List<Course> GetCourses(string searchString)
       {
          return db.Courses
-            .Where(a => a.CourseTitle.Contains(searchString)) 
+            .Where(a => a.CourseTitle.Contains(searchString) || a.CourseDescription.Contains(searchString)) 
             .OrderBy(a => a.CourseTitle)
             .ToList();
       }
