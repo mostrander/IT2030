@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<MVCMusicStoreApplication.Models.Album>
+@model MVCMusicStoreApplication.Models.Album
 
 @{
     ViewBag.Title = "Index";
@@ -16,30 +16,52 @@
 
     <div>
         <dl>
-            <dt>
-                @Html.DisplayNameFor(model => model.Title);
+ 
+            <dt id="album-Title">
+                @Html.DisplayFor(model => model.Title)
             </dt>
 
+
+            <!-- THIS does WORK!!! -->
             <dd>
-                
+               <img src="@Html.DisplayFor(model => model.AlbumArtUrl)" />"
+            </dd>
+
+
+            <!-- Have to have in pairs to work properly??
+                <dd> will not bold the text, <dt> will! -->
+            <dd id="artist-Name">
+               @Html.DisplayNameFor(model => model.Artist):
             </dd>
 
             <dt>
-               @Html.DisplayNameFor(model => model.Artist.Name);
+                @Html.DisplayFor(model => model.Artist.Name)
             </dt>
 
+
+            <dd id="album-Price">
+                @Html.DisplayNameFor(model => model.Price):
+            </dd>
+
             <dt>
-                @Html.DisplayNameFor(model => model.Price);
+                @Html.DisplayFor(model => model.Price)
             </dt>
 
 
         </dl>
 
-        @Html.ActionLink("Add to Shopping Cart!", "ShoppingCart");
+        
     </div>
         
-       
+    <button id="cartButton">
+        @Html.ActionLink("Add to Cart", "ShoppingCart", new { id = Model.AlbumId })
+    </button>
 
+    <br/>
+
+    <button id="returnButton">
+        @Html.ActionLink("Back to List", "Index")
+    </button>
 </div>
 
 
