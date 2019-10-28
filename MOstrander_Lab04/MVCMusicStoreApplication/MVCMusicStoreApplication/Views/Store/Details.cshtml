@@ -1,0 +1,47 @@
+﻿
+@model IEnumerable<MVCMusicStoreApplication.Models.Album>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h1 id="browse-main-header"> ASP.NET MVC MUSIC STORE</h1>
+
+
+<div>
+    <h2>Content Body </h2>
+
+    <h2 id="browse-list-header">Details</h2>
+
+    <div>
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Title);
+            </dt>
+
+            <dd>
+                
+            </dd>
+
+            <dt>
+               @Html.DisplayNameFor(model => model.Artist.Name);
+            </dt>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price);
+            </dt>
+
+
+        </dl>
+
+        @Html.ActionLink("Add to Shopping Cart!", "ShoppingCart");
+    </div>
+        
+       
+
+</div>
+
+
+
+
