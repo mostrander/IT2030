@@ -7,13 +7,15 @@
 }
 
 
-<h1 id="browse-main-header"> ASP.NET MVC MUSIC STORE</h1>
+<head>
+    <link href="~/Content/Store.css" rel="stylesheet" />
+</head>
 
 
-<div>
-    <h2>Content Body </h2>
+<div id="storeDiv" class="container">
+    <p>Content Body </p>
 
-    <h2 id="browse-list-header">Details</h2>
+    <h2>Details</h2>
 
     <div>
         <dl>
@@ -25,7 +27,7 @@
 
             <!-- THIS does WORK!!! -->
             <dd>
-                <img src="@Html.DisplayFor(model => model.AlbumArtUrl)" />"
+                <img src="@Html.DisplayFor(model => model.AlbumArtUrl)" />
             </dd>
 
 
@@ -55,13 +57,13 @@
     </div>
 
     <button id="cartButton">
-        @Html.ActionLink("Add to Cart", "ShoppingCart", new { id = Model.AlbumId })
+        @Html.ActionLink("Add to Cart", "ShoppingCart",  new { id = Model.AlbumId })
     </button>
 
     <br />
 
     <button id="returnButton">
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back to List", "Index", new { id = Model.GenreId })
     </button>
 </div>
 

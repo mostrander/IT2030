@@ -7,13 +7,15 @@
 }
 
 
-<h1 id="browse-main-header"> ASP.NET MVC MUSIC STORE</h1>
+<head>
+    <link href="~/Content/Store.css" rel="stylesheet" />
+</head>
 
 
-<div>
-    <h2>Content Body </h2>
+<div id="storeDiv" class="container">
+    <p>Content Body </p>
 
-    <h2 id="browse-list-header">Browse by Album</h2>
+    <h2 id="browse-list-header">Here are the list of albums</h2>
 
     <p>
         <ul>
@@ -27,7 +29,7 @@
 
         </ul>
 
-
+        @Html.ActionLink("Back to Browse", "Browse")
     </p>
 </div>
 

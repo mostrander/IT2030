@@ -2,32 +2,37 @@
 @model IEnumerable<MVCMusicStoreApplication.Models.Genre>
 
 @{
-   Layout = "~/Views/Store/_StoreLayout.cshtml";
-   ViewBag.Title = "Browse";
+    Layout = "~/Views/Store/_StoreLayout.cshtml";
+    ViewBag.Title = "Browse";
 }
 
+<head>
+    <link href="~/Content/Store.css" rel="stylesheet" />
+</head>
 
-<h1 id="browse-main-header"> ASP.NET MVC MUSIC STORE</h1>
+<body>
+    <div id="storeDiv" class="container">
+        <p>Content Body </p>
 
+        <h2 id="browse-list-header">Browse by Genre</h2>
 
-<div>
-    <h2>Content Body </h2>
+        <p>
 
-    <h2 id="browse-list-header">Browse by Genre</h2>
+            <ul>
 
-    <p>
-        <ul>
+                @foreach (var item in Model)
+                {
+                    <li>
+                        @Html.ActionLink(item.Name, "Index", new { id = item.GenreId })
+                    </li>
+                }
 
-            @foreach (var item in Model)
-            {
-                <li>
-                    @Html.ActionLink(item.Name, "Index", new { id = item.GenreId })
-                </li>
-            }
+            </ul>
+        </p>
+    </div>
 
-        </ul>
-    </p>
-</div>
+</body>
+
 
 
 

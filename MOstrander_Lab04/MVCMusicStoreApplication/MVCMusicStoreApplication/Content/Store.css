@@ -1,0 +1,103 @@
+﻿
+body {
+    margin-left: -17%;
+}
+
+/************** Navigation top bar ****************/
+.navbar-inverse {
+    background-color: #FBF9EF;
+    border-color: #080808;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #616060;
+    margin-left: -100%;
+ }
+
+
+img#navLogo{
+    position: fixed;
+    top: 3%;
+    left: 10%;
+}
+
+
+.navbar-fixed-top {
+    padding-top: 65px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+
+.navLinks {
+    position: fixed;
+    right: -900px;
+    top: -38px;
+}
+
+#linkSpace {
+    font-size: 40px;
+    font-stretch: extra-condensed;
+    color: #9d9d9d;
+    top: -45px;
+}
+
+
+
+/*********** End of Navigation top bar *********/
+#storeDiv.container {
+    margin-top: 135px;
+}
+
+
+
+
+
+/************ Details image CSS ************/
+#storeDiv img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/************ End of image CSS ***********/
+
+
+
+/********* CSS for store link buttons **********/
+#storeDiv #cartButton {
+    font-size: 16px;
+    padding: 3px 8px;
+    margin-bottom: 5px;
+    background-color: #616060;
+}
+
+
+#storeDiv #returnButton {
+    font-size: 16px;
+    padding: 3px 6px;
+    margin-bottom: 5px;
+    background-color: #616060;
+}
+
+#storeDiv #cartButton a:link, #cartButton a:visited {
+    color: white;
+}
+
+#storeDiv #returnButton a:link, #returnButton a:visited {
+    color: white;
+}
+
+
+/******* End of store link button CSS **********/
+
+
+/********* Details CSS **************/
+
+#artist-Name, #album-Price {
+    float: left;
+    padding-right: 5px;
+    font-style: italic;
+}
+
+
+/******** End of Details CSS *********/
