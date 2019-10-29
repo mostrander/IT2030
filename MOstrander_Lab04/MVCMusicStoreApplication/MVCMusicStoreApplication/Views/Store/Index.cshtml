@@ -2,7 +2,8 @@
 @model IEnumerable<MVCMusicStoreApplication.Models.Album>
 
 @{
-    ViewBag.Title = "Index";
+   Layout = "~/Views/Store/_StoreLayout.cshtml";
+   ViewBag.Title = "Browse";
 }
 
 
@@ -20,7 +21,7 @@
             @foreach (var item in Model)
             {
                 <li>
-                    @Html.ActionLink(item.Title, "Details", new { id = item.AlbumId})
+                    @Html.ActionLink(item.Title, "Details", new { id = item.AlbumId })
                 </li>
             }
 
