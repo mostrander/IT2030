@@ -1,6 +1,6 @@
 ﻿
 body {
-    margin-left: -17%;
+    margin-left: auto;
 }
 
 /************** Navigation top bar ****************/
@@ -11,27 +11,26 @@ body {
 
 .navbar-inverse .navbar-brand {
     color: #616060;
-    margin-left: -100%;
  }
 
 
 img#navLogo{
     position: fixed;
     top: 3%;
-    left: 10%;
+    left: 20%;
 }
 
 
 .navbar-fixed-top {
     padding-top: 65px;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 
 .navLinks {
     position: fixed;
-    right: -900px;
+    right: -700px;
     top: -38px;
 }
 
@@ -49,17 +48,6 @@ img#navLogo{
     margin-top: 135px;
 }
 
-
-
-
-
-/************ Details image CSS ************/
-#storeDiv img {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-/************ End of image CSS ***********/
 
 
 
@@ -98,6 +86,14 @@ img#navLogo{
     padding-right: 5px;
     font-style: italic;
 }
+
+/************ Details image CSS ************/
+#storeDiv img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/************ End of image CSS ***********/
 
 
 /******** End of Details CSS *********/
