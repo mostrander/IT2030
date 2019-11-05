@@ -36,6 +36,8 @@ namespace MVCMusicStoreApplication.Models
             //save to session state
 
             cartId = Guid.NewGuid().ToString();
+
+            //save to the session date
             context.Session[CartSessionId] = cartId;
 
          }
@@ -74,8 +76,78 @@ namespace MVCMusicStoreApplication.Models
       }
 
 
+      public void AddToCart(int albumId)
+      {
+         //verify that the album id exists in the database
 
-   }
+
+         //if it finds item in cart, rturn that. else return null
+         Cart cartItem = db.Carts.SingleOrDefault(c => c.CartId == this.ShoppingCartId && c.AlbumId == albumId);
+
+         if(cartItem == null)
+         {
+            // item is not in cart, add new item
+            cartItem = new Cart()
+            {
+               CartId = this.ShoppingCartId,
+               AlbumId = albumId,
+               Count = 1,
+               DateCreated = DateTime.Now
+            };
+
+            db.Carts.Add(cartItem);
+
+         }
+         else
+         {
+            // item is in cart, increase item count
+            cartItem.Count = cartItem.Count + 1;
+         }
+
+         //tells database to persist the changes
+         db.SaveChanges();
+
+      }
+
+
+      public int RemoveFromCart(int recordId)
+      {
+         //verify that the album id exists in the database
+
+
+         //if it finds item in cart, rturn that. else return null
+         Cart cartItem = db.Carts.SingleOrDefault(c => c.CartId == this.ShoppingCartId && c.RecordId == recordId);
+
+         if (cartItem == null)
+         {
+            // item is not in cart, throw null exception
+            throw new NullReferenceException();
+
+         }
+
+         int newCount;
+
+         if(cartItem.Count > 1)
+         {
+            // item is in cart & count > 1, decrease count
+            cartItem.Count--;
+            newCount = cartItem.Count;
+         }
+         else
+         {
+            //if count = 0, remove item completely
+            db.Carts.Remove(cartItem);
+            newCount = 0;
+         }
+         
+
+         //tells database to persist the changes
+         db.SaveChanges();
+
+         return newCount;
+      }
+
+   }//end of shopping cart class
 
    
 }

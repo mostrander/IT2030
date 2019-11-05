@@ -57,7 +57,8 @@
     </div>
 
     <button id="cartButton">
-        @Html.ActionLink("Add to Cart", "ShoppingCart",  new { id = Model.AlbumId })
+        
+        @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart" ,new { id = Model.AlbumId}, null)
     </button>
 
     <br />

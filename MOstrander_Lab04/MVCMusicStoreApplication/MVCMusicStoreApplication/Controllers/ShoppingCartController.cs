@@ -9,6 +9,8 @@ namespace MVCMusicStoreApplication.Controllers
 {
     public class ShoppingCartController : Controller
     {
+      MVCMusicStoreDB db = new MVCMusicStoreDB();
+
         // GET: ShoppingCart
         public ActionResult Index()
         {
@@ -25,20 +27,41 @@ namespace MVCMusicStoreApplication.Controllers
             return View(vm);
         }
 
+
       //GET: ShoppingCart//AddToCart
-      public ActionResult AddToCart()
+      public ActionResult AddToCart(int id)
       {
          ShoppingCart cart = ShoppingCart.GetCart(this.HttpContext);
 
-         throw new NotImplementedException();
+         cart.AddToCart(id);
+
+         return RedirectToAction("Index"); //redirects user to index page
       }
 
       // POST: ShoppingCart/RemoveFromCart
       [HttpPost]
-      public ActionResult RemoveFromCart ()
+      public ActionResult RemoveFromCart (int id)
       {
+
+         ShoppingCart cart = ShoppingCart.GetCart(this.HttpContext);
+
+         Album album = db.Carts.SingleOrDefault(c => c.RecordId == id).AlbumSelected;
+         
+         int newItemCount = cart.RemoveFromCart(id);
+
+         ShoppingCartRemoveViewModel vm = new ShoppingCartRemoveViewModel()
+         {
+            DeleteId = id,
+            CartTotal = cart.GetCartTotal(),
+            ItemCount = newItemCount,
+            Message = album.Title + " Your album has been removed from the cart"
+         };
+
+         return Json(vm);
+
+
          //error that allows code to compile still
-         throw new NotImplementedException();
+         //throw new NotImplementedException();
       }
 
     }
