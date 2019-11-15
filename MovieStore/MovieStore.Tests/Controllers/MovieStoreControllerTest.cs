@@ -59,7 +59,7 @@ namespace MovieStore.Tests.Controllers
 
          //act
 
-         RedirectToRouteResult result = controller.IndexRedirect(id:1) as RedirectToRouteResult;
+         RedirectToRouteResult result = controller.IndexRedirect(id: 1) as RedirectToRouteResult;
 
          //assert
          Assert.IsNotNull(result);
@@ -76,7 +76,7 @@ namespace MovieStore.Tests.Controllers
 
          //act
 
-         HttpStatusCodeResult result = controller.IndexRedirect(id:0) as HttpStatusCodeResult;
+         HttpStatusCodeResult result = controller.IndexRedirect(id: 0) as HttpStatusCodeResult;
 
          //assert
          Assert.AreEqual(HttpStatusCode.BadRequest, (HttpStatusCode)result.StatusCode);
@@ -93,7 +93,7 @@ namespace MovieStore.Tests.Controllers
                   new Movie{MovieId = 1, Title = "Superman 1"},
                   new Movie{MovieId = 2, Title = "Superman 2"},
                }.AsQueryable();
-            ;
+         ;
 
          // step 2
          Mock<MovieStoreDBContext> mockContext = new Mock<MovieStoreDBContext>();
@@ -150,8 +150,8 @@ namespace MovieStore.Tests.Controllers
          MoviesController controller = new MoviesController(mockContext.Object);
 
          //act
-         ViewResult result = controller.Details(id:1) as ViewResult;
-         
+         ViewResult result = controller.Details(id: 1) as ViewResult;
+
 
          //assert
          Assert.IsNotNull(result);
@@ -379,9 +379,164 @@ namespace MovieStore.Tests.Controllers
       }
 
 
+      [TestMethod]
+      //??? Not adding to the database, even though it does contain the Movie object "anime"
+      //passes "anime" object to method call correctly, but not saving to mock db list
+      public void MovieStore_CreateBind_NewItemAdded()
+      {
+         // Goal: Query from our own list instead of database
+         //step 1:
+         var list = new List<Movie>
+               {
+                  new Movie{MovieId = 1, Title = "Animal Crossing XL"},
+                  new Movie{MovieId = 2, Title = "Super Mario Bros"},
+               }.AsQueryable();
+         ;
+
+         // step 2
+         Mock<MovieStoreDBContext> mockContext = new Mock<MovieStoreDBContext>();
+         Mock<DbSet<Movie>> mockSet = new Mock<DbSet<Movie>>();
+
+         //step 3
+         mockSet.As<IQueryable<Movie>>().Setup(m => m.GetEnumerator()).Returns(list.GetEnumerator());
+         mockSet.As<IQueryable<Movie>>().Setup(m => m.Provider).Returns(list.Provider);
+         mockSet.As<IQueryable<Movie>>().Setup(m => m.ElementType).Returns(list.ElementType);
+
+         //step 4
+         mockContext.Setup(expression: db => db.Movies).Returns(mockSet.Object);
+
+         //arrange
+         MoviesController controller = new MoviesController(mockContext.Object);
+         Movie anime = new Movie { MovieId = 3, Title = "Your Name", YearRelease = 2018 };
+
+         //act
+         ViewResult result = controller.Create(anime) as ViewResult;
+         ViewResult resultSuccess = controller.ListFromDb() as ViewResult;
+
+         //assert
+         Assert.IsNotNull(resultSuccess);
+      }
 
 
+      [TestMethod]
+      public void MovieStore_Delete_NullId()
+      {
+         var list = new List<Movie>
+               {
+                  new Movie{MovieId = 1, Title = "Animal Crossing XL"},
+                  new Movie{MovieId = 2, Title = "Super Mario Bros"},
+               }.AsQueryable();
+         ;
+
+         // step 2
+         Mock<MovieStoreDBContext> mockContext = new Mock<MovieStoreDBContext>();
+         Mock<DbSet<Movie>> mockSet = new Mock<DbSet<Movie>>();
+
+         //step 3
+         mockSet.As<IQueryable<Movie>>().Setup(m => m.GetEnumerator()).Returns(list.GetEnumerator());
+         mockSet.As<IQueryable<Movie>>().Setup(m => m.Provider).Returns(list.Provider);
+         mockSet.As<IQueryable<Movie>>().Setup(m => m.ElementType).Returns(list.ElementType);
+         mockSet.Setup(expression: m => m.Find(It.IsAny<Object>())).Returns(list.First());
+
+         //step 4
+         mockContext.Setup(expression: db => db.Movies).Returns(mockSet.Object);
 
 
+         //arrange
+         MoviesController controller = new MoviesController(mockContext.Object);
+
+         //act
+         HttpStatusCodeResult result = controller.Delete(id: null) as HttpStatusCodeResult;
+
+
+         //assert
+         Assert.IsNotNull(result);
+         Assert.AreEqual(expected: HttpStatusCode.BadRequest, actual: (HttpStatusCode)result.StatusCode);
+      }
+
+      [TestMethod]
+      public void MovieStore_Delete_MovieIsNull()
+      {
+         // Goal: Query from our own list instead of database
+         //step 1:
+         var list = new List<Movie>
+               {
+                  new Movie{MovieId = 1, Title = "Animal Crossing XL"},
+                  new Movie{MovieId = 2, Title = "Super Mario Bros"},
+               }.AsQueryable();
+         ;
+
+         // step 2
+         Mock<MovieStoreDBContext> mockContext = new Mock<MovieStoreDBContext>();
+         Mock<DbSet<Movie>> mockSet = new Mock<DbSet<Movie>>();
+
+         //step 3
+         mockSet.As<IQueryable<Movie>>().Setup(m => m.GetEnumerator()).Returns(list.GetEnumerator());
+         mockSet.As<IQueryable<Movie>>().Setup(m => m.Provider).Returns(list.Provider);
+         mockSet.As<IQueryable<Movie>>().Setup(m => m.ElementType).Returns(list.ElementType);
+         mockSet.Setup(expression: m => m.Find(It.IsAny<Object>())).Returns(list.First());
+
+         //this is required for this method to function properly, will not simply take id number
+         Movie movie = null;
+         mockSet.Setup(expression: m => m.Find(It.IsAny<Object>())).Returns(movie);
+
+         //step 4
+         mockContext.Setup(expression: db => db.Movies).Returns(mockSet.Object);
+
+
+         //arrange
+         MoviesController controller = new MoviesController(mockContext.Object);
+
+         //act
+         HttpStatusCodeResult result = controller.Delete(id: 10) as HttpStatusCodeResult;
+
+
+         //assert
+         Assert.IsNotNull(result);
+         Assert.AreEqual(expected: HttpStatusCode.NotFound, actual: (HttpStatusCode)result.StatusCode);
+
+      }
+
+      [TestMethod]
+      public void MovieStore_Delete_Success()
+      {
+         // Goal: Query from our own list instead of database
+         //step 1:
+         var list = new List<Movie>
+               {
+                  new Movie{MovieId = 1, Title = "Animal Crossing XL"},
+                  new Movie{MovieId = 2, Title = "Super Mario Bros"},
+               }.AsQueryable();
+         ;
+
+         // step 2
+         Mock<MovieStoreDBContext> mockContext = new Mock<MovieStoreDBContext>();
+         Mock<DbSet<Movie>> mockSet = new Mock<DbSet<Movie>>();
+
+         //step 3
+         mockSet.As<IQueryable<Movie>>().Setup(m => m.GetEnumerator()).Returns(list.GetEnumerator());
+         mockSet.As<IQueryable<Movie>>().Setup(m => m.Provider).Returns(list.Provider);
+         mockSet.As<IQueryable<Movie>>().Setup(m => m.ElementType).Returns(list.ElementType);
+         mockSet.Setup(expression: m => m.Find(It.IsAny<Object>())).Returns(list.First());
+
+         //this is required for this method to function properly, will not simply take id number
+         mockSet.Setup(expression: m => m.Find(It.IsAny<Object>())).Returns(list.First());
+
+         //step 4
+         mockContext.Setup(expression: db => db.Movies).Returns(mockSet.Object);
+
+
+         //arrange
+         MoviesController controller = new MoviesController(mockContext.Object);
+
+         //act
+         ViewResult result = controller.Delete(id: 1) as ViewResult;
+
+
+         //assert
+         Assert.IsNotNull(result);
+
+         //test that it is recieving correct value?
+      }
    }
 }

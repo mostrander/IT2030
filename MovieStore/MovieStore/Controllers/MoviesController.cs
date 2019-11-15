@@ -103,8 +103,9 @@ namespace MovieStore.Controllers
             return View(movie);
         }
 
-        // GET: Movies/Edit/5
-        public ActionResult Edit(int? id)
+
+      // GET: Movies/Edit/5
+      public ActionResult Edit(int? id)
         {
             if (id == null)
             {
