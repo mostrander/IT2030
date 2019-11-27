@@ -11,7 +11,7 @@ namespace IT2030_MeganOstrander_FinalProject.Models
       [Key]
       public virtual int OrganizerId { get; set; }
 
-      //[Required]
+      [Required]
       public virtual String Name { get; set; }
 
       public virtual String ContactInfo { get; set; }

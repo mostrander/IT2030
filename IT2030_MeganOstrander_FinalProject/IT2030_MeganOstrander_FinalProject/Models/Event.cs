@@ -13,38 +13,38 @@ namespace IT2030_MeganOstrander_FinalProject.Models
       public virtual int TypeId { get; set; }
       public virtual int OrganizerId { get; set; }
 
-      //[Required]
-      //[StringLength(50, MinimumLength = 3)]
+      [Required]
+      [StringLength(50, MinimumLength = 3)]
       public virtual String Title { get; set; }
 
       public virtual Type Type { get; set; }
 
-      //[Required]
+      [Required]
       public virtual DateTime StartDate { get; set; }
 
-      //[Required]
+      [Required]
       public virtual DateTime StartTime { get; set; }
 
-      //[Required]
+      [Required]
       public virtual DateTime EndDate { get; set; }
 
-      //[Required]
+      [Required]
       public virtual DateTime EndTime { get; set; }
 
-      //[Required]
+      [Required]
       public virtual String Location { get; set; }
 
-      //[Required]
+      [Required]
       public virtual Organizer Organizer {get;set;} 
 
-      //[StringLength(150)]
+      [StringLength(150)]
       public virtual String Description { get; set; }
 
-      //[Required]
-      //[Range(1, 100)]
+      [Required]
+      [Range(1, 100)]
       public virtual int MaxTickets { get; set; }
       public virtual int AvailableTickets { get; set; }
 
    }
-
+   
 }

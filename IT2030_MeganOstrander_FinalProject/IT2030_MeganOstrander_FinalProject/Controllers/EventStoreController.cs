@@ -6,6 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Optimization;
+using System.Web.Routing;
+using System.Data.Entity;
 using IT2030_MeganOstrander_FinalProject.Models;
 
 namespace IT2030_MeganOstrander_FinalProject.Controllers

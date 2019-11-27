@@ -1,5 +1,7 @@
-﻿using System;
+﻿using IT2030_MeganOstrander_FinalProject.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,6 +14,8 @@ namespace IT2030_MeganOstrander_FinalProject
     {
         protected void Application_Start()
         {
+            Database.SetInitializer(new SampleData());
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
