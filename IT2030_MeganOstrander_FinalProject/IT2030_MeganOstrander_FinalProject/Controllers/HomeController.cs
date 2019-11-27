@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+//This is the Controller for the home page!
+
+
 namespace IT2030_MeganOstrander_FinalProject.Controllers
 {
    public class HomeController : Controller
