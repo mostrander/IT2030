@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IT2030_MeganOstrander_FinalProject", "IT2030_MeganOstrander_FinalProject\IT2030_MeganOstrander_FinalProject.csproj", "{57F7BD58-2786-4803-9CFC-BB7F85922D9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IT2030_MeganOstrander_FinalProject.Tests", "IT2030_MeganOstrander_FinalProject.Tests\IT2030_MeganOstrander_FinalProject.Tests.csproj", "{F2891DA2-9FA9-4934-9946-C1D6E46901BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57F7BD58-2786-4803-9CFC-BB7F85922D9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57F7BD58-2786-4803-9CFC-BB7F85922D9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57F7BD58-2786-4803-9CFC-BB7F85922D9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57F7BD58-2786-4803-9CFC-BB7F85922D9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2891DA2-9FA9-4934-9946-C1D6E46901BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2891DA2-9FA9-4934-9946-C1D6E46901BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2891DA2-9FA9-4934-9946-C1D6E46901BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2891DA2-9FA9-4934-9946-C1D6E46901BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81792A80-EF05-41FF-BD85-DC83980A4368}
+	EndGlobalSection
+EndGlobal
