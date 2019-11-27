@@ -16,7 +16,7 @@ namespace IT2030_MeganOstrander_FinalProject.Tests.Controllers
       public void Index()
       {
          // Arrange
-         EventStore controller = new EventStore();
+         HomeController controller = new HomeController();
 
          // Act
          ViewResult result = controller.Index() as ViewResult;
@@ -29,7 +29,7 @@ namespace IT2030_MeganOstrander_FinalProject.Tests.Controllers
       public void About()
       {
          // Arrange
-         EventStore controller = new EventStore();
+         HomeController controller = new HomeController();
 
          // Act
          ViewResult result = controller.About() as ViewResult;
@@ -42,7 +42,7 @@ namespace IT2030_MeganOstrander_FinalProject.Tests.Controllers
       public void Contact()
       {
          // Arrange
-         EventStore controller = new EventStore();
+         HomeController controller = new HomeController();
 
          // Act
          ViewResult result = controller.Contact() as ViewResult;
