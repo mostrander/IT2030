@@ -23,16 +23,16 @@ namespace IT2030_MeganOstrander_FinalProject.Models
 
          var type = new List<Type>
             {
-               new Type { Name = "Singles", Description = "" },
-               new Type { Name = "Couples", Description = "" },
-               new Type { Name = "Seminar", Description = "" },
-               new Type { Name = "Expo", Description = "" },
-               new Type { Name = "Concert", Description = "" },
-               new Type { Name = "Gala", Description = "" },
-               new Type { Name = "Fundraiser", Description = "" },
                new Type { Name = "Child Friendly", Description = "" },
+               new Type { Name = "Concert", Description = "" },
+               new Type { Name = "Couples", Description = "" },
+               new Type { Name = "Expo", Description = "" },
+               new Type { Name = "Fundraiser", Description = "" },
+               new Type { Name = "Gala", Description = "" },
                new Type { Name = "Movie", Description = "" },
                new Type { Name = "Party", Description = "" },
+               new Type { Name = "Seminar", Description = "" },
+               new Type { Name = "Singles", Description = "" },
                new Type { Name = "Other", Description = ""}
             };
 
