@@ -20,7 +20,9 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
         // GET: EventStore
         public ActionResult Index()
         {
-            var events = db.Events;
+            var events = db.Events.Include(a => a.Type).Include(a => a.Organizer)
+            .OrderBy(a => a.StartDate)
+            ;
             return View(events.ToList());
         }
 
