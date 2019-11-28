@@ -13,12 +13,12 @@ namespace IT2030_MeganOstrander_FinalProject.Models
       {
          var organizers = new List<Organizer>
             {
+                new Organizer { Name = "Annabell", ContactInfo = "722-351-2885"  },
+                new Organizer { Name = "Jessica Simpson", ContactInfo = "874-689-3356"  },
+                new Organizer { Name = "Mercer Frey", ContactInfo = "121-388-2603"  },
                 new Organizer { Name = "Molly Whitmen", ContactInfo = "444-388-6544" },
                 new Organizer { Name = "Tony Stark", ContactInfo = "779-668-9556"  },
-                new Organizer { Name = "Jessica Simpson", ContactInfo = "874-689-3356"  },
-                new Organizer { Name = "Usagi Tsukino", ContactInfo = "289-645-1158"  },
-                new Organizer { Name = "Mercer Frey", ContactInfo = "121-388-2603"  },
-                new Organizer { Name = "Annabell", ContactInfo = "722-351-2885"  }
+                new Organizer { Name = "Usagi Tsukino", ContactInfo = "289-645-1158"  }
             };
 
          var type = new List<Type>
