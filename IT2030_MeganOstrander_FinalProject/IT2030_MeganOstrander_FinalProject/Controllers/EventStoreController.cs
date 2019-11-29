@@ -26,8 +26,18 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
             return View(events.ToList());
         }
 
-        // GET: EventStore/Details/5
-        public ActionResult Details(int? id)
+      // GET: EventStore FOR UPCOMING events
+      public ActionResult UpcomingEvents()
+      {
+         var events = db.Events.Include(a => a.Type).Include(a => a.Organizer)
+            .Where(a => a.StartDate > DateTime.Now)
+            .OrderBy(a => a.StartDate)
+         ;
+         return View(events.ToList());
+      }
+
+      // GET: EventStore/Details/5
+      public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -41,7 +51,9 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
             return View(@event);
         }
 
+        
         // GET: EventStore/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.OrganizerId = new SelectList(db.Organizers, "OrganizerId", "Name");
@@ -53,6 +65,7 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "EventId,TypeId,OrganizerId,Title,StartDate,StartTime,EndDate,EndTime,Location,Description,MaxTickets,AvailableTickets")] Event @event)
         {
@@ -68,7 +81,9 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
             return View(@event);
         }
 
-        // GET: EventStore/Edit/5
+
+        // GET: EventStore/Edit/5 
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -85,9 +100,11 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
             return View(@event);
         }
 
+        
         // POST: EventStore/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "EventId,TypeId,OrganizerId,Title,StartDate,StartTime,EndDate,EndTime,Location,Description,MaxTickets,AvailableTickets")] Event @event)
@@ -104,6 +121,7 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
         }
 
         // GET: EventStore/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -119,6 +137,7 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
         }
 
         // POST: EventStore/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

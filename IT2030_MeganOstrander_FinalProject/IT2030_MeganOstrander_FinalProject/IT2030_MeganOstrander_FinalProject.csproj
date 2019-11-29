@@ -246,6 +246,7 @@
     <Content Include="Views\EventStore\Details.cshtml" />
     <Content Include="Views\EventStore\Edit.cshtml" />
     <Content Include="Views\EventStore\Index.cshtml" />
+    <Content Include="Views\EventStore\UpcomingEvents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,13 +17,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <!-- Home Page Link -->
                 @Html.ActionLink("Events R Us", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <!-- Navigation Links to About & Contact pages-->
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
+                <!-- Loads in partial webpage for main layout, used to change links based on whether user is logged in or not -->
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

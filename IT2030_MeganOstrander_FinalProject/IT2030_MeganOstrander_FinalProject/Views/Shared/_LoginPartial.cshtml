@@ -7,23 +7,28 @@
 
 <ul class="nav navbar-nav navbar-right">
     <li>
+        <!-- Greets user when they are logged in -->
         @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
     </li>
 
-    <li>@Html.ActionLink("Find An Event", "ActionName", "ControllerName", htmlAttributes: new { id = "findEventLink" })</li>
-    <li>@Html.ActionLink("Organize An Event", "ActionName", "ControllerName", htmlAttributes: new { id = "createEventLink" })</li>
-    <li>@Html.ActionLink("Tickets Ordered", "ActionName", "ControllerName", htmlAttributes: new { id = "ordersLink" })</li>
+    <!-- Navigation Links to other webpages available when user is logged in -->
+    <li>@Html.ActionLink("Find An Event", "UpcomingEvents", "EventStore", routeValues: null, htmlAttributes: new { id = "UpcomingEventLink" })</li>
+    <li>@Html.ActionLink("Organize An Event", "Create", "EventStore", routeValues: null, htmlAttributes: new { id = "createEventLink" })</li>
+
+
+    <li>@Html.ActionLink("Tickets Ordered", "ActionName", "ControllerName", routeValues: null, htmlAttributes: new { id = "ordersLink" })</li>
     <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
 </ul>
     }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Find An Event", "ActionName", "ControllerName", htmlAttributes: new { id = "findEventLink" })</li>
-        <li>@Html.ActionLink("Organize An Event", "ActionName", "ControllerName", htmlAttributes: new { id = "createEventLink" })</li>
+<ul class="nav navbar-nav navbar-right">
+    <!-- Navigation links available when user is not logged in -->
+    <li>@Html.ActionLink("Find An Event", "UpcomingEvents", "EventStore", routeValues: null, htmlAttributes: new { id = "UpcomingEventLink" })</li>
+    <li>@Html.ActionLink("Organize An Event", "Create", "EventStore", routeValues: null, htmlAttributes: new { id = "createEventLink" })</li>
 
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+</ul>
 }
