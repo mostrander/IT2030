@@ -35,6 +35,12 @@ namespace IT2030_MeganOstrander_FinalProject.Models
       public virtual String Location { get; set; }
 
       [Required]
+      public virtual String City { get; set; }
+
+      [Required]
+      public virtual String State { get; set; }
+
+      [Required]
       public virtual Organizer Organizer {get;set;} 
 
       [StringLength(150)]

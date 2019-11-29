@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using System.Data.Entity;
 using IT2030_MeganOstrander_FinalProject.Models;
 
 namespace IT2030_MeganOstrander_FinalProject.Controllers
@@ -35,6 +34,23 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
          ;
          return View(events.ToList());
       }
+
+
+      public ActionResult EventSearch (string q)
+      {
+         var events = GetEvents(q);
+
+         return PartialView("_EventSearch", events);
+      }
+
+      private List<Event> GetEvents(string searchString)
+      {
+         return db.Events
+            .Where(a => a.Type.Name.Contains(searchString) || a.Title.Contains(searchString))
+            .OrderBy(a => a.StartDate)
+            .ToList();
+      }
+
 
       // GET: EventStore/Details/5
       public ActionResult Details(int? id)
