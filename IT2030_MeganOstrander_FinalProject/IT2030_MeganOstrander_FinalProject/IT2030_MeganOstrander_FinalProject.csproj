@@ -171,10 +171,15 @@
     <Compile Include="Controllers\EventStoreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RegistrationCartController.cs" />
+    <Compile Include="Models\DeleteCartViewModel.cs" />
+    <Compile Include="Models\RegistrationCart.cs" />
+    <Compile Include="Models\RegistrationCartViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\EventsDBContext.cs" />
     <Compile Include="Models\SampleData.cs" />
@@ -252,6 +257,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\RegistrationCart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

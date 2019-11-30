@@ -26,5 +26,7 @@ namespace IT2030_MeganOstrander_FinalProject.Models
       public System.Data.Entity.DbSet<IT2030_MeganOstrander_FinalProject.Models.Organizer> Organizers { get; set; }
 
       public System.Data.Entity.DbSet<IT2030_MeganOstrander_FinalProject.Models.Type> Types { get; set; }
+
+      public System.Data.Entity.DbSet<IT2030_MeganOstrander_FinalProject.Models.Cart> Carts { get; set; }
    }
 }
