@@ -1,0 +1,35 @@
+﻿@model IT2030_MeganOstrander_FinalProject.Models.Organizer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Organizer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactInfo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrganizerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

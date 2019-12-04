@@ -171,6 +171,7 @@
     <Compile Include="Controllers\EventStoreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrganizersController.cs" />
     <Compile Include="Controllers\RegistrationCartController.cs" />
     <Compile Include="Models\DeleteCartViewModel.cs" />
     <Compile Include="Models\RegistrationCart.cs" />
@@ -256,6 +257,11 @@
     <Content Include="Views\EventStore\_EventSearch.cshtml" />
     <Content Include="Views\RegistrationCart\Orders.cshtml" />
     <Content Include="Views\RegistrationCart\Index.cshtml" />
+    <Content Include="Views\Organizers\Create.cshtml" />
+    <Content Include="Views\Organizers\Delete.cshtml" />
+    <Content Include="Views\Organizers\Details.cshtml" />
+    <Content Include="Views\Organizers\Edit.cshtml" />
+    <Content Include="Views\Organizers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

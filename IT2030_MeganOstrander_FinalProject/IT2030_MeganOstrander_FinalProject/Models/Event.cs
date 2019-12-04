@@ -34,14 +34,13 @@ namespace IT2030_MeganOstrander_FinalProject.Models
       [Required]
       public virtual String Location { get; set; }
 
-      [Required]
-      public virtual String City { get; set; }
 
-      [Required]
+      public virtual String City { get; set; }
       public virtual String State { get; set; }
 
-      [Required]
-      public virtual Organizer Organizer {get;set;} 
+      public virtual Organizer Organizer { get; set; }
+
+      public virtual String Contact {get; set;}
 
       [StringLength(150)]
       public virtual String Description { get; set; }
@@ -51,8 +50,6 @@ namespace IT2030_MeganOstrander_FinalProject.Models
       public virtual int MaxTickets { get; set; }
       public virtual int AvailableTickets { get; set; }
 
-     
-      public virtual int Quantity { get; set; }
    }
    
 }

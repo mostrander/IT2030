@@ -14,7 +14,7 @@ $(function () {
 
             $("#update-message").text(data.Message);
             $("#cart-total").text(data.CartTotal);
-            $("#item-count-" + data.DeleteId).text(data.ItemCount);
+            //$("#item-count-" + data.DeleteId).text(data.ItemCount);
             $("#item-status-" + data.DeleteId).text(data.status);
             
 

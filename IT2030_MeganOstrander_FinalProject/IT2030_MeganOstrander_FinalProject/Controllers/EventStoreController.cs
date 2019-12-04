@@ -83,7 +83,7 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EventId,TypeId,OrganizerId,Title,StartDate,StartTime,EndDate,EndTime,Location,Description,MaxTickets,AvailableTickets")] Event @event)
+        public ActionResult Create([Bind(Include = "EventId,TypeId,OrganizerId,Title,StartDate,StartTime,EndDate,EndTime,Location,City,State,Description,MaxTickets,AvailableTickets")] Event @event)
         {
             if (ModelState.IsValid)
             {
@@ -123,7 +123,7 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EventId,TypeId,OrganizerId,Title,StartDate,StartTime,EndDate,EndTime,Location,Description,MaxTickets,AvailableTickets")] Event @event)
+        public ActionResult Edit([Bind(Include = "EventId,TypeId,OrganizerId,Title,StartDate,StartTime,EndDate,EndTime,Location,City,State,Description,MaxTickets,AvailableTickets")] Event @event)
         {
             if (ModelState.IsValid)
             {
@@ -172,5 +172,12 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+
+     
+
+
+
     }
 }

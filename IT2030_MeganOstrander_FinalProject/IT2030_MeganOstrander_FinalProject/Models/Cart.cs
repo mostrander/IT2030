@@ -26,6 +26,6 @@ namespace IT2030_MeganOstrander_FinalProject.Models
 
       public DateTime DateOrdered { get; set; }
 
-      public String Status { get; set; }
+      public virtual String Status { get; set; }
    }
 }
