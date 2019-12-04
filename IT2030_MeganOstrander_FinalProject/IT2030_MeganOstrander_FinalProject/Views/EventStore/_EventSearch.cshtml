@@ -1,44 +1,75 @@
 ﻿@model IEnumerable<IT2030_MeganOstrander_FinalProject.Models.Event>
 
-<div id="searchresults">
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AvailableTickets)
-            </th>
-            <th></th>
-        </tr>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-        @foreach (var item in Model)
+<h2>Find an event near you!</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
+        @using (Ajax.BeginForm("EventSearch", "EventStore", new AjaxOptions
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type.Name)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AvailableTickets)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.EventId })
-            </td>
-        </tr>
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "GET",
+            OnFailure = "searchFailed",
+            LoadingElementId = "ajax-loader",
+            UpdateTargetId = "searchresults"
+        }))
+        {
+            <input type="text" name="q" />
+            <input type="submit" value="search" />
+            <img id="ajax-loader"
+                 src=""
+                 style="display:none" />
         }
+        
 
-    </table>
+            <div id="searchresults">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Type)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StartDate)
+                        </th>
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.AvailableTickets)
+                        </th>*@
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Type.Name)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StartDate)
+                            </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.AvailableTickets)
+                            </td>*@
+                            <td>
+                                @Html.ActionLink("Details", "Details", new { id = item.EventId })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+    </div>
 </div>
+
+

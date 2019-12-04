@@ -35,18 +35,35 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
          return View("UpcomingEvents", events);
       }
 
-
+      //Both search methods work, just need to tell how to differentiate them!
       public ActionResult EventSearch (string q)
       {
-         var events = GetEvents(q);
+         var events = GetEventsByType(q);
 
          return PartialView("_EventSearch", events);
       }
 
-      private List<Event> GetEvents(string searchString)
+
+      public ActionResult EventSearch2 (string q)
+      {
+         var events = GetEventsByLocation(q);
+
+         return PartialView("_EventSearch", events);
+      }
+
+
+      private List<Event> GetEventsByType(string searchString)
       {
          return db.Events
-            .Where(a => a.Type.Name.Contains(searchString) || a.Title.Contains(searchString))
+            .Where(a => a.Type.Name.Equals(searchString) || a.Title.Equals(searchString))
+            .OrderBy(a => a.StartDate)
+            .ToList();
+      }
+
+      private List<Event> GetEventsByLocation(string searchLocation)
+      {
+         return db.Events
+            .Where(a => a.City.Equals(searchLocation) || a.State.Equals(searchLocation))
             .OrderBy(a => a.StartDate)
             .ToList();
       }
@@ -83,7 +100,7 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EventId,TypeId,OrganizerId,Title,StartDate,StartTime,EndDate,EndTime,Location,City,State,Description,MaxTickets,AvailableTickets")] Event @event)
+        public ActionResult Create([Bind(Include = "EventId,TypeId,OrganizerId,Title,StartDate,StartTime,EndDate,EndTime,City,State,Organizer,Contact,Description,MaxTickets,AvailableTickets")] Event @event)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +109,6 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OrganizerId = new SelectList(db.Organizers, "OrganizerId", "Name", @event.OrganizerId);
             ViewBag.TypeId = new SelectList(db.Types, "TypeId", "Name", @event.TypeId);
             return View(@event);
         }
@@ -123,7 +139,7 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EventId,TypeId,OrganizerId,Title,StartDate,StartTime,EndDate,EndTime,Location,City,State,Description,MaxTickets,AvailableTickets")] Event @event)
+        public ActionResult Edit([Bind(Include = "EventId,TypeId,OrganizerId,Title,StartDate,StartTime,EndDate,EndTime,City,State,Organizer,Contact,Description,MaxTickets,AvailableTickets")] Event @event)
         {
             if (ModelState.IsValid)
             {

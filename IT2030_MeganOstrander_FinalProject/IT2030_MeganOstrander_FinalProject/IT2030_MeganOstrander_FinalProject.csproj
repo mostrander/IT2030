@@ -173,6 +173,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrganizersController.cs" />
     <Compile Include="Controllers\RegistrationCartController.cs" />
+    <Compile Include="Controllers\TypesController.cs" />
     <Compile Include="Models\DeleteCartViewModel.cs" />
     <Compile Include="Models\RegistrationCart.cs" />
     <Compile Include="Models\RegistrationCartViewModel.cs" />
@@ -262,6 +263,11 @@
     <Content Include="Views\Organizers\Details.cshtml" />
     <Content Include="Views\Organizers\Edit.cshtml" />
     <Content Include="Views\Organizers\Index.cshtml" />
+    <Content Include="Views\Types\Create.cshtml" />
+    <Content Include="Views\Types\Delete.cshtml" />
+    <Content Include="Views\Types\Details.cshtml" />
+    <Content Include="Views\Types\Edit.cshtml" />
+    <Content Include="Views\Types\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

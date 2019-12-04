@@ -31,10 +31,9 @@ namespace IT2030_MeganOstrander_FinalProject.Models
       [Required]
       public virtual DateTime EndTime { get; set; }
 
-      [Required]
       public virtual String Location { get; set; }
 
-
+      [Required]
       public virtual String City { get; set; }
       public virtual String State { get; set; }
 

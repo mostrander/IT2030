@@ -5,12 +5,12 @@
    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Find an event near you!</h2>
 
 <div class="panel panel-default">
     <div class="panel-heading"></div>
     <div class="panel-body">
-        @using (Ajax.BeginForm("EventSearch", "EventStore", new AjaxOptions
+        @using (Ajax.BeginForm("EventSearch2", "EventStore", new AjaxOptions
             {
                 InsertionMode = InsertionMode.Replace,
                 HttpMethod = "GET",
@@ -40,9 +40,9 @@
                        <th>
                            @Html.DisplayNameFor(model => model.State)
                        </th>
-                       <th>
+                       @*<th>
                            @Html.DisplayNameFor(model => model.AvailableTickets)
-                       </th>
+                       </th>*@
                        <th></th>
                    </tr>
 
@@ -61,9 +61,9 @@
                            <td>
                                @Html.DisplayFor(modelItem => item.State)
                            </td>
-                           <td>
+                           @*<td>
                                @Html.DisplayFor(modelItem => item.AvailableTickets)
-                           </td>
+                           </td>*@
                            <td>
                                @Html.ActionLink("Details", "Details", new { id = item.EventId })
                            </td>
