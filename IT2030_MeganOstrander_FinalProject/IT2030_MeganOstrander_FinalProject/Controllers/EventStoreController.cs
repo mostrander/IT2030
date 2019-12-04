@@ -32,7 +32,7 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
             .Where(a => a.StartDate > DateTime.Now)
             .OrderBy(a => a.StartDate)
          ;
-         return View(events.ToList());
+         return View("UpcomingEvents", events);
       }
 
 

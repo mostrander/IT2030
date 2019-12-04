@@ -7,11 +7,13 @@ using IT2030_MeganOstrander_FinalProject.Models;
 
 namespace IT2030_MeganOstrander_FinalProject.Controllers
 {
+   [Authorize]
     public class RegistrationCartController : Controller
     {
       EventsDBContext db = new EventsDBContext();
 
-      // GET: ShoppingCart
+      // GET: ShoppingCart/Index
+      //Tickets Ordered Page
       public ActionResult Index()
       {
          RegistrationCart cart = RegistrationCart.GetCart(this.HttpContext);
@@ -19,13 +21,16 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
          RegistrationCartViewModel vm = new RegistrationCartViewModel()
          {
             CartItems = cart.GetCartItems()
-
          };
-
 
          return View(vm);
       }
 
+      //???
+      public ViewResult Orders()
+      {
+         return View();
+      }
 
       //GET: ShoppingCart//AddToCart
       public ActionResult AddToCart(int id)
@@ -44,16 +49,16 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
 
          RegistrationCart cart = RegistrationCart.GetCart(this.HttpContext);
 
-         Event eventSelected = db.Carts.SingleOrDefault(c => c.EventId == id).EventSelected;
+         Event eventSelected = db.Carts.SingleOrDefault(c => c.RecordId == id).EventSelected;
 
          int newItemCount = cart.RemoveFromCart(id);
+
 
          DeleteCartViewModel vm = new DeleteCartViewModel()
          {
             DeleteId = id,
-            //CartTotal = cart.GetCartTotal(),
             ItemCount = newItemCount,
-            Message = eventSelected.Title + " Your album has been removed from the cart"
+            Message = eventSelected.Title + " has been removed from the cart"
          };
 
          return Json(vm);

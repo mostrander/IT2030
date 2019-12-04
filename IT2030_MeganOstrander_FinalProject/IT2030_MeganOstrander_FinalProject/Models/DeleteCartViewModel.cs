@@ -9,7 +9,11 @@ namespace IT2030_MeganOstrander_FinalProject.Models
    {
       public int DeleteId;
 
+      public decimal CartTotal;
+
       public int ItemCount;
+
+      public String status;
 
       public string Message;
    }

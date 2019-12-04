@@ -1,8 +1,8 @@
-﻿
-@model IT2030_MeganOstrander_FinalProject.Models.RegistrationCartViewModel
+﻿@model IT2030_MeganOstrander_FinalProject.Models.Cart
+
 
 @{
-    ViewBag.Title = "Tickets Ordered";
+    ViewBag.Title = "Order Summary";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
@@ -13,38 +13,19 @@
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 }
 
-<h2>Tickets Ordered</h2>
+<h1>Order Summary</h1>
 
-<br />
-<div id="update-message"></div>
+<div id="summary">
+
+    <p>Order Number + @Html.DisplayFor(model => model.RecordId)</p>
+    <p>@Html.DisplayTextFor(model => model.EventSelected.Title)</p>
+    <p>Number of Tickets: @Html.DisplayTextFor(model => model.EventSelected.Quantity)</p>
+</div>
+
+
 
 <div>
-    <table class="table">
-        <tr>
-            <th>Title</th>
-            <th>Date Ordered</th>
-            <th># of Tickets</th>
-            <th>Order Status</th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.CartItems)
-        {
-            <tr id="record-@item.RecordId">
-                <td>@item.EventSelected.Title</td>
-                <td>@item.DateOrdered</td>
-                <td id="item-count-@item.Quantity">@item.Quantity</td>
-                <td>???</td>
-                <td><a href="#" data-id="@item.RecordId" class="RemoveLink">Cancel Order</a></td>
-            </tr>
-        }
-
-
-    </table>
-
-    <button>
-        @Html.ActionLink("Return to Browse", "Index", "EventStore")
-    </button>  
-
+    @Html.ActionLink("Back to Browse", "Index", "EventStore")
 </div>
+
 

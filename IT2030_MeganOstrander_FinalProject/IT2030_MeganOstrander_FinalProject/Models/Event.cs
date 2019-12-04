@@ -51,6 +51,8 @@ namespace IT2030_MeganOstrander_FinalProject.Models
       public virtual int MaxTickets { get; set; }
       public virtual int AvailableTickets { get; set; }
 
+     
+      public virtual int Quantity { get; set; }
    }
    
 }

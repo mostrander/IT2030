@@ -1,88 +1,85 @@
 ﻿@model IEnumerable<IT2030_MeganOstrander_FinalProject.Models.Event>
 
+@{
+   ViewBag.Title = "Index";
+   Layout = "~/Views/Shared/_Layout.cshtml";
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Organizer.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Type.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MaxTickets)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AvailableTickets)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Organizer.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaxTickets)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AvailableTickets)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EventId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EventId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EventId })
-        </td>
-    </tr>
 }
 
-</table>
-<p>
-    @Html.ActionLink("See All Events", "Index", "EventStore", routeValues: null, htmlAttributes: new { id = "seeAllEventsLink" })
-</p>
+<h2>Index</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
+        @using (Ajax.BeginForm("EventSearch", "EventStore", new AjaxOptions
+        {
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "GET",
+            OnFailure = "searchFailed",
+            LoadingElementId = "ajax-loader",
+            UpdateTargetId = "searchresults"
+        }))
+        {
+            <input type="text" name="q" />
+            <input type="submit" value="search" />
+            <img id="ajax-loader"
+                 src=""
+                 style="display:none" />
+        }
+        <div id="searchresults">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StartDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.City)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.State)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AvailableTickets)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.City)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.State)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AvailableTickets)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", new { id = item.EventId })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts
+    {
+    <script src="~/Scripts/App/EventScripts.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    }

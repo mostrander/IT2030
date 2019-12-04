@@ -254,10 +254,11 @@
     <Content Include="Views\EventStore\Index.cshtml" />
     <Content Include="Views\EventStore\UpcomingEvents.cshtml" />
     <Content Include="Views\EventStore\_EventSearch.cshtml" />
+    <Content Include="Views\RegistrationCart\Orders.cshtml" />
+    <Content Include="Views\RegistrationCart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\RegistrationCart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

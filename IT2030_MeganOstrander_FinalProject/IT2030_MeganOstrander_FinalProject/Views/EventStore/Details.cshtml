@@ -11,7 +11,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Organizer.Name)
+            @Html.DisplayNameFor(model => model.Organizer)
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Type.Name)
+            @Html.DisplayNameFor(model => model.Type)
         </dt>
 
         <dd>
@@ -117,6 +117,12 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.EventId }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button id="cartButton">
+        @Html.ActionLink("Register", "AddToCart", "RegistrationCart", new { id = Model.EventId }, null)
+    </button>
+    |
+    <button>
+        @Html.ActionLink("Back to Browse", "Index", "EventStore")
+    </button>
+    
 </p>

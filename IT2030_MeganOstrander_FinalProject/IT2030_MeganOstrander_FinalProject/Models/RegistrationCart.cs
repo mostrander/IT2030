@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace IT2030_MeganOstrander_FinalProject.Models
 {
    public class RegistrationCart
-   {
+   { 
 
       public String RegistrationCartId;
-
+      int RecordId;
 
       private EventsDBContext db = new EventsDBContext();
 
@@ -28,7 +29,7 @@ namespace IT2030_MeganOstrander_FinalProject.Models
          //constant
          const string CartSessionId = "OrderId";
 
-         string OrderId;
+         string orderId = null;
 
          //look at session state
          if (context.Session[CartSessionId] == null)
@@ -40,10 +41,10 @@ namespace IT2030_MeganOstrander_FinalProject.Models
             if(!string.IsNullOrWhiteSpace(context.User.Identity.Name))
             {
                //obtain information from user login
-               OrderId = context.User.Identity.Name;
+               orderId = context.User.Identity.Name;
 
                //save to the session date
-               context.Session[CartSessionId] = OrderId;
+               context.Session[CartSessionId] = orderId;
             }
 
          }
@@ -52,12 +53,12 @@ namespace IT2030_MeganOstrander_FinalProject.Models
             //if exist
             //return the cart id
 
-            OrderId = context.Session[CartSessionId].ToString();
+            orderId = context.Session[CartSessionId].ToString();
 
          }
 
 
-         return OrderId;
+         return orderId;
       }
 
 
@@ -69,34 +70,47 @@ namespace IT2030_MeganOstrander_FinalProject.Models
 
       }
 
-
+      
       public void AddToCart(int eventId)
       {
+         //generate a random number for each new set of tickets ordered
+         Random number = new Random();
+
+         RecordId = number.Next();
+
          //verify that the event id exists in the database
 
 
-         //if it finds item in cart, rturn that. else return null
-         Cart cartItem = db.Carts.SingleOrDefault(c => c.OrderId == this.RegistrationCartId && c.EventId == eventId);
+         //if it finds item in cart, return that. else return null
+         Cart cartItem = db.Carts.SingleOrDefault(c => c.RecordId == this.RecordId && c.EventId == eventId);
 
-         if (cartItem == null)
-         {
+         Event eventSelected = db.Events.Find(eventId);
+
+         //if (cartItem == null)
+         //{
             // item is not in cart, add new item
             cartItem = new Cart()
             {
+               RecordId = number.Next(),
                OrderId = this.RegistrationCartId,
                EventId = eventId,
-               Quantity = 1,
-               DateOrdered = DateTime.Now
+               QuantityOrdered = 1,
+               DateOrdered = DateTime.Now,
+               Status = "Processed"
             };
 
-            db.Carts.Add(cartItem);
+            eventSelected.AvailableTickets = eventSelected.AvailableTickets - cartItem.QuantityOrdered; //decrease available tickets for that event
 
-         }
-         else
-         {
-            // item is in cart, increase item count
-            cartItem.Quantity = cartItem.Quantity + 1;
-         }
+            db.Carts.Add(cartItem);
+            
+         //}
+
+         //else
+         //{
+         //   // item is in cart, increase item count
+         //   cartItem.Quantity = cartItem.Quantity + 1;
+         //   cartItem.EventSelected.AvailableTickets--; //decrease available tickets for that event 
+         //}
 
          //tells database to persist the changes
          db.SaveChanges();
@@ -106,11 +120,11 @@ namespace IT2030_MeganOstrander_FinalProject.Models
 
       public int RemoveFromCart(int recordId)
       {
-         //verify that the album id exists in the database
+         //verify that the record id exists in the database
 
 
-         //if it finds item in cart, rturn that. else return null
-         Cart cartItem = db.Carts.SingleOrDefault(c => c.OrderId == this.RegistrationCartId && c.EventId == recordId);
+         //if it finds item in cart, return that. else return null
+         Cart cartItem = db.Carts.SingleOrDefault(c => c.OrderId == this.RegistrationCartId && c.RecordId == recordId);
 
          if (cartItem == null)
          {
@@ -119,21 +133,24 @@ namespace IT2030_MeganOstrander_FinalProject.Models
 
          }
 
-         int newCount;
+         int newCount = cartItem.QuantityOrdered;
 
-         if (cartItem.Quantity > 1)
+         cartItem.EventSelected.AvailableTickets = cartItem.EventSelected.AvailableTickets + newCount; //increase available tickets back to original amount
+
+         if (cartItem.QuantityOrdered > 1)
          {
             // item is in cart & count > 1, decrease count
-            cartItem.Quantity--;
-            newCount = cartItem.Quantity;
+            cartItem.QuantityOrdered = 0;
+
+            newCount = cartItem.QuantityOrdered;
+            
          }
          else
          {
             //if count = 0, remove item completely
-            db.Carts.Remove(cartItem);
             newCount = 0;
+            cartItem.Status = "Cancelled";
          }
-
 
          //tells database to persist the changes
          db.SaveChanges();

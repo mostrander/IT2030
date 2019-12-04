@@ -1,0 +1,52 @@
+﻿
+@model IT2030_MeganOstrander_FinalProject.Models.RegistrationCartViewModel
+
+@{
+    ViewBag.Title = "Tickets Ordered";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@section Scripts
+    {
+    <script src="~/Scripts/App/EventScripts.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<h2>Tickets Ordered</h2>
+
+<br />
+<div id="update-message"></div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>Order Number</th>
+            <th>Title</th>
+            <th>Date Ordered</th>
+            <th># of Tickets</th>
+            <th>Order Status</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.CartItems)
+        {
+            <tr id="record-@item.RecordId">
+                <td>@item.RecordId</td>
+                <td>@item.EventSelected.Title</td>
+                <td>@item.DateOrdered</td>
+                <td id="item-count-@item.QuantityOrdered">@item.QuantityOrdered</td>
+                <td id="item-status-@item.Status">@item.Status</td>
+                <td><a href="#" data-id="@item.RecordId" class="RemoveLink">Cancel Order</a></td>
+            </tr>
+        }
+
+
+    </table>
+
+    <button>
+        @Html.ActionLink("Return to Browse", "Index", "EventStore")
+    </button>
+
+</div>
+
