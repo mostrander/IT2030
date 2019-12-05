@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    color: #000;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +22,91 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+
+/*Navigation header changes*/
+.navbar-inverse {
+    background-color: #413fb5;
+    border-color: #333;
+    border-bottom: solid;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #ffffff;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #ffffff;
+}
+
+/*Changes to homepage display*/
+#homepage {
+    background-color: #adafff;
+    padding: 0 0 0 .5em;
+    text-align: center;
+    margin-right: 42em;
+}
+
+.col-md-4 {
+    width: 50%;
+    background-color: #eee;
+}
+
+#noColor {
+    background-color: #fff;
+}
+
+
+/*Event Store Index & seach page changes*/
+
+#eventIndex {
+    text-align: center;
+}
+
+.searchBars {
+    padding: 15px;
+    text-align: center;
+}
+
+#searchButton {
+    padding: .5em 1.5em .5em 1.5em;
+    border-radius: .60em;
+}
+
+/*#searchImage {
+    
+}*/
+
+
+/*Changes to buttons and links*/
+.button {
+    background-color: #413fb5;
+    color: white;
+    text-decoration: none;
+    border-radius: .25em;
+}
+
+#deals {
+    padding: .5em 8em .5em 8em;
+    border-radius: 1em;
+}
+
+.RemoveLink {
+    background-color: #ba1f16;
+    padding: .5em;
+    color: white;
+    text-decoration: none;
+    border-radius: 1em;
+}
+
+.button a, .button a:visited{
+    color: white;
+}
+
+/*Changes to tables*/
+.table{
+    border: solid;
+    border-color: black;
+    table-layout: auto;
 }

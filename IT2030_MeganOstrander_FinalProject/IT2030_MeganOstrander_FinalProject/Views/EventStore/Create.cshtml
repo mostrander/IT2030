@@ -20,7 +20,7 @@
         <div class="col-md-10">
             @Html.DropDownList("TypeId", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.TypeId, "", new { @class = "text-danger" })
-            <button id="NewEventButton">@Html.ActionLink("Create a new Event Type", "Create", "Types")</button>
+            <button id="NewEventButton" class="button">@Html.ActionLink("Create a new Event Type", "Create", "Types")</button>
         </div>
 
     </div>
@@ -147,8 +147,11 @@
 </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div >
+    <button class="button">
+        @Html.ActionLink("Back to List", "Index")
+    </button>
+    
 </div>
 
 @section Scripts {

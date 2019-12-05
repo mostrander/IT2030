@@ -5,71 +5,74 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Find an event near you!</h2>
+<h2 id="eventIndex">Find an event near you!</h2>
 
-<div class="panel panel-default">
-    <div class="panel-heading"></div>
-    <div class="panel-body">
-        @using (Ajax.BeginForm("EventSearch", "EventStore", new AjaxOptions
+<div class="panel-body, searchBars">
+    @using (Ajax.BeginForm("EventSearch", "EventStore", new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "GET",
+        OnFailure = "searchFailed",
+        LoadingElementId = "ajax-loader",
+        UpdateTargetId = "searchresults"
+    }))
+    {
+        <input type="text" name="q" placeholder="Event Type or Event Title" />
+        <input type="text" name="p" placeholder="Location, City, or State" />
+        <input id="searchButton" type="submit" value="search" class="button" />
+        <img id="ajax-loader"
+             src=""
+             style="display:none" />
+    }
+
+</div>
+
+<div id="searchresults">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.AvailableTickets)
+                </th>*@
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
         {
-            InsertionMode = InsertionMode.Replace,
-            HttpMethod = "GET",
-            OnFailure = "searchFailed",
-            LoadingElementId = "ajax-loader",
-            UpdateTargetId = "searchresults"
-        }))
-        {
-            <input type="text" name="q" />
-            <input type="submit" value="search" />
-            <img id="ajax-loader"
-                 src=""
-                 style="display:none" />
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type.Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.AvailableTickets)
+                    </td>*@
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.EventId })
+                </td>
+            </tr>
         }
-        
 
-            <div id="searchresults">
-                <table class="table">
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Title)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Type)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.StartDate)
-                        </th>
-                        @*<th>
-                            @Html.DisplayNameFor(model => model.AvailableTickets)
-                        </th>*@
-                        <th></th>
-                    </tr>
-
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Title)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Type.Name)
-                            </td>
-
-                            <td>
-                                @Html.DisplayFor(modelItem => item.StartDate)
-                            </td>
-                            @*<td>
-                                @Html.DisplayFor(modelItem => item.AvailableTickets)
-                            </td>*@
-                            <td>
-                                @Html.ActionLink("Details", "Details", new { id = item.EventId })
-                            </td>
-                        </tr>
-                    }
-
-                </table>
-            </div>
-    </div>
+    </table>
 </div>
 
 
+@section scripts
+    {
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/App/EventScripts.js"></script>
+}

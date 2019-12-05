@@ -3,8 +3,11 @@
 }
 
 <div class="jumbotron">
-    <h1>Event R Us</h1>
-    <p class="lead">Find events near you. Never miss out again!</p>
+    <div id="homepage">
+        <h1 id="homepage-title">Event R Us</h1>
+        <p class="lead">Find events near you. Never miss out again!</p>
+    </div>
+    
     
 </div>
 
@@ -14,13 +17,11 @@
         <p>
             <input type="text" placeholder="Event or Event Type" id="searchEventBox" />
             <input type="text" placeholder="Location, City, or State" id="searchEventLocation" />
-            <button type="button" id="searchButton">search</button>
+            <button type="button" id="searchButton" class="button">search</button>
         </p>
     </div>
 
-    <div class="col-md-4">
-        <p>
-            <button type="button">Click here to see Last Minute Deals!</button>
-        </p>
+    <div class="col-md-4" id="noColor">
+         <button type="button" class="button" id="deals">Click here to see Last Minute Deals!</button>
     </div>
 </div>

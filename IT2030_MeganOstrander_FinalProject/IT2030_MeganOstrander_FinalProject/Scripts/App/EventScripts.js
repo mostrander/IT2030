@@ -22,8 +22,9 @@ $(function () {
             //    $("#record-" + data.DeleteId).fadeOut(); //will hide the item through animation
             //}
 
+            
         });
-        
 
     })
 });
+

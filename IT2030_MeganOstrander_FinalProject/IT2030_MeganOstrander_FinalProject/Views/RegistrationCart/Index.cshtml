@@ -21,7 +21,6 @@
 <div>
     <table class="table">
         <tr>
-            <th>Order Number</th>
             <th>Title</th>
             <th>Date Ordered</th>
             <th># of Tickets</th>
@@ -32,21 +31,29 @@
         @foreach (var item in Model.CartItems)
         {
             <tr id="record-@item.RecordId">
-                <td>@item.RecordId</td>
-                <td>@item.EventSelected.Title</td>
+                <td>
+                    @Html.ActionLink(@item.EventSelected.Title, "Details", "EventStore", new { id = item.EventId }, null)
+                    @*@item.EventSelected.Title*@
+                </td>
                 <td>@item.DateOrdered</td>
                 <td id="item-count-@item.QuantityOrdered">@item.QuantityOrdered</td>
                 <td id="item-status-@item.Status">@item.Status</td>
-                <td><a href="#" data-id="@item.RecordId" class="RemoveLink">Cancel Order</a></td>
+                <td>
+                    <button data-id="@item.RecordId" class="RemoveLink">
+                        Cancel Order
+                    </button>
+                </td>
             </tr>
         }
 
 
     </table>
 
-    <button>
+
+    <button class="button">
         @Html.ActionLink("Return to Browse", "Index", "EventStore")
     </button>
+
 
 </div>
 

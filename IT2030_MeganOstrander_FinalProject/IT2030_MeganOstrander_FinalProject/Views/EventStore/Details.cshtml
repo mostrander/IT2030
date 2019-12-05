@@ -120,11 +120,11 @@
     </dl>
 </div>
 <p>
-    <button id="cartButton">
+    <button id="cartButton" class="button">
         @Html.ActionLink("Register", "AddToCart", "RegistrationCart", new { id = Model.EventId }, null)
     </button>
     |
-    <button>
+    <button class="button">
         @Html.ActionLink("Back to Browse", "Index", "EventStore")
     </button>
     
