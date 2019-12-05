@@ -58,10 +58,18 @@ textarea {
 }
 
 
-/*Event Store Index & seach page changes*/
+/*Event Store Index & search page changes*/
 
 #eventIndex {
     text-align: center;
+}
+
+#IndexBackground {
+    background-image: url('Images/market.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: auto;
+    padding-bottom: 10em;
 }
 
 .searchBars {
@@ -89,7 +97,7 @@ textarea {
 
 #deals {
     padding: .5em 8em .5em 8em;
-    border-radius: 1em;
+    border-radius: .40em;
 }
 
 .RemoveLink {
