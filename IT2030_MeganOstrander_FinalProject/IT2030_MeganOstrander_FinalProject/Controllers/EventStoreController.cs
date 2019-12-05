@@ -38,17 +38,35 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
       //Both search methods work, just need to tell how to differentiate them!
       public ActionResult EventSearch (string q)
       {
-         var events = GetEventsByType(q);
 
-         return PartialView("_EventSearch", events);
+         if (q != null)
+         {
+            var events = GetEventsByType(q);
+            return PartialView("_EventSearch", events);
+         }
+         else
+         {
+            //need to re route this to show an error instead!
+            return PartialView("_Error");
+         }
+
       }
 
 
-      public ActionResult EventSearch2 (string q)
+      public ActionResult LocationSearch(string p)
       {
-         var events = GetEventsByLocation(q);
 
-         return PartialView("_EventSearch", events);
+         if (p != null)
+         {
+            var events = GetEventsByLocation(p);
+            return PartialView("_EventSearch", events);
+         }
+         else
+         {
+            //need to re route this to show an error instead!
+            return PartialView("_Error");
+         }
+
       }
 
 
@@ -67,6 +85,32 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
             .OrderBy(a => a.StartDate)
             .ToList();
       }
+
+      //private List<Event> GetEvents(string q, string p)
+      //{
+      //   return db.Events
+      //      .Where(a => a.Type.Equals(q) || a.Title.Equals(q) || a.City.Equals(p) || a.State.Equals(p))
+      //      .OrderBy(a => a.StartDate)
+      //      .ToList();
+      //}
+
+
+      //Both search methods work, just need to tell how to differentiate them!
+      public ActionResult Deals()
+      {
+         DateTime date = DateTime.Today;
+         DateTime over = DateTime.Now; //any event that starts now or earlier
+         date = date.AddDays(3); //adds days to the current date! Had to look that up :)
+
+         var events = db.Events.Where(a => a.StartDate >= over && a.StartDate <= date)
+            .OrderBy(a => a.StartDate)
+            .ToList();
+
+
+
+         return PartialView("_Deals", events);
+      }
+
 
 
       // GET: EventStore/Details/5
