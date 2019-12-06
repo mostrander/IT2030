@@ -1,4 +1,5 @@
 ﻿body {
+    padding-top: 50px;
     padding-bottom: 20px;
     color: #000;
 }
@@ -25,11 +26,6 @@ textarea {
 
 
 /*Navigation header changes*/
-
-#navButton {
-    padding: .2em 1.5em .2em 1.5em;
-}
-
 .navbar-inverse {
     background-color: #413fb5;
     border-color: #333;
@@ -66,7 +62,6 @@ textarea {
 
 #eventIndex {
     text-align: center;
-    padding-top: .5em;
 }
 
 #IndexBackground {
@@ -77,39 +72,19 @@ textarea {
     padding-bottom: 10em;
 }
 
-#homeSearch {
-    text-align: center;
-    color: #413fb5;
-}
-
-#homeSearchBox {
-    padding-top: 1em;
-    padding-bottom: 2em;
-    border-radius: 1em;
-}
-
 .searchBars {
     padding: 15px;
     text-align: center;
 }
 
-#searchButton{
-    padding: .5em 1em .5em 1em;
-    border-radius: .60em;
-}
-
-#searchButton2 {
-    padding: .5em 1em .5em 1em;
+#searchButton {
+    padding: .5em 1.5em .5em 1.5em;
     border-radius: .60em;
 }
 
 /*#searchImage {
     
 }*/
-
-#searchresults{
-    padding-top: .5em;
-}
 
 
 /*Changes to buttons and links*/
@@ -121,7 +96,7 @@ textarea {
 }
 
 #deals {
-    padding: .5em 1em .5em 1em;
+    padding: .5em 8em .5em 8em;
     border-radius: .40em;
 }
 
