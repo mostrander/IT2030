@@ -21,8 +21,9 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
         {
             var events = db.Events.Include(a => a.Type).Include(a => a.Organizer)
             .OrderBy(a => a.StartDate)
+            .ToList()
             ;
-            return View(events.ToList());
+            return PartialView(events);
         }
 
       // GET: EventStore FOR UPCOMING events
@@ -33,6 +34,15 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
             .OrderBy(a => a.StartDate)
          ;
          return View("UpcomingEvents", events);
+      }
+
+      public ActionResult ShowAllEvents()
+      {
+         var events = db.Events.Include(a => a.Type).Include(a => a.Organizer)
+            .OrderBy(a => a.StartDate)
+            .ToList()
+            ;
+         return View("_EventSearch", events);
       }
 
       //Both search methods work, just need to tell how to differentiate them!

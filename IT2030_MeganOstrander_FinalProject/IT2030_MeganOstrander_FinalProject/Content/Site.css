@@ -62,6 +62,7 @@ textarea {
 
 #eventIndex {
     text-align: center;
+    color: #413fb5;
 }
 
 #IndexBackground {
@@ -89,9 +90,9 @@ textarea {
 }
 
 
-/*#searchImage {
-    
-}*/
+#compass {
+    padding: 1.5% 45% 0 45%;
+}
 
 
 /*Changes to buttons and links*/
@@ -122,6 +123,10 @@ textarea {
 
 .button a, .button a:visited{
     color: white;
+}
+
+#showAll{
+    padding-top: .4em;
 }
 
 /*Changes to tables*/

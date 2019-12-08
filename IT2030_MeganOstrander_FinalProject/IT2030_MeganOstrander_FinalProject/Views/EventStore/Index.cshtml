@@ -5,6 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+<img id="compass" src="~/Content/Images/arrow.JPG" />
+
 <h2 id="eventIndex">Find an event near you!</h2>
 
 <div class="panel-body, searchBars">
@@ -40,6 +43,18 @@
              style="display:none" />
     }
 
+    <div id="showAll">
+        @Ajax.ActionLink("See all events", "ShowAllEvents", "EventStore", null, new AjaxOptions
+            {
+                   InsertionMode = InsertionMode.Replace,
+                   HttpMethod = "GET",
+                   OnFailure = "searchFailed",
+                   LoadingElementId = "ajax-loader",
+                   UpdateTargetId = "searchresults"
+             },
+                new { @class = "btn btn-primary" })
+
+    </div>
 </div>
 
 <div id="searchresults">
@@ -50,7 +65,7 @@
 
 @section scripts
     {
-    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/Scripts/App/EventScripts.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 }
