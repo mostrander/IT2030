@@ -72,6 +72,17 @@ textarea {
     padding-bottom: 10em;
 }
 
+h3#homeSearch {
+    text-align: center;
+    color: #413fb5;
+}
+
+#homeSearchBox {
+    padding-top: 1em;
+    padding-bottom: 2em;
+    border-radius: 1em;
+}
+
 .searchBars {
     padding: 15px;
     text-align: center;

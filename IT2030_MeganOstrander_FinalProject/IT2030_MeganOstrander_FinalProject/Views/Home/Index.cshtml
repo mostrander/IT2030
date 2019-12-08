@@ -11,16 +11,50 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Find an Event</h2>
-        <p>
-            <input type="text" placeholder="Event or Event Type" id="searchEventBox" />
-            <input type="text" placeholder="Location, City, or State" id="searchEventLocation" />
-            <button type="button" id="searchButton" class="button">search</button>
-        </p>
+    <div class="col-md-4" id="homeSearchBox">
+        <h3 id="homeSearch">Find an Event</h3>
+        <div class="panel-body, searchBars">
+            @using (Ajax.BeginForm("EventSearch", "EventStore", new AjaxOptions
+            {
+                InsertionMode = InsertionMode.Replace,
+                HttpMethod = "GET",
+                OnFailure = "searchFailed",
+                LoadingElementId = "ajax-loader",
+                UpdateTargetId = "searchresults"
+            }))
+            {
+                <input type="text" name="q" placeholder="Event or Event Type" />
+                <input type="text" name="p" placeholder="Location, City, or State" />
+                <input id="searchButton" type="submit" value="search" class="button" />
+                <img id="ajax-loader"
+                     src=""
+                     style="display:none" />
+            }
+
+        </div>
     </div>
 
     <div class="col-md-4" id="noColor">
-         <button type="button" class="button" id="deals">Click here to see Last Minute Deals!</button>
+        <button type="submit" class="button" id="deals">
+            @Ajax.ActionLink("Click here to see last minute deals!", "Deals", "EventStore", null, new AjaxOptions
+                       {
+                           InsertionMode = InsertionMode.Replace,
+                           HttpMethod = "GET",
+                           OnFailure = "searchFailed",
+                           LoadingElementId = "ajax-loader",
+                           UpdateTargetId = "dealsTable"
+                       },
+                            new { @class = "button" })
+        </button>
+
+
+        <div id="dealsTable"></div>
+
     </div>
 </div>
+
+@section scripts
+    {
+    <script src="~/Scripts/App/EventScripts.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
