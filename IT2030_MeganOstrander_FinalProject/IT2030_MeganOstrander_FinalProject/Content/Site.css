@@ -72,7 +72,7 @@ textarea {
     padding-bottom: 10em;
 }
 
-h3#homeSearch {
+#homeSearch {
     text-align: center;
     color: #413fb5;
 }
@@ -88,10 +88,6 @@ h3#homeSearch {
     text-align: center;
 }
 
-#searchButton {
-    padding: .5em 1.5em .5em 1.5em;
-    border-radius: .60em;
-}
 
 /*#searchImage {
     
@@ -99,6 +95,11 @@ h3#homeSearch {
 
 
 /*Changes to buttons and links*/
+#searchButton {
+    padding: .25em 1.5em .25em 1.5em;
+    border-radius: .80em;
+}
+
 .button {
     background-color: #413fb5;
     color: white;
@@ -124,8 +125,21 @@ h3#homeSearch {
 }
 
 /*Changes to tables*/
-.table{
+.table {
     border: solid;
     border-color: black;
     table-layout: auto;
+    background-color: #393782;
+}
+
+.table th, td {
+    color: white;
+}
+
+.table button {
+    background-color: #5c5c65;
+}
+
+#dailyHeader{
+    text-align: center;
 }

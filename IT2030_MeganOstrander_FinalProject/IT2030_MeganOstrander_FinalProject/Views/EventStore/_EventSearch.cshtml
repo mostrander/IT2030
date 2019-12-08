@@ -1,43 +1,20 @@
 ﻿@model IEnumerable<IT2030_MeganOstrander_FinalProject.Models.Event>
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2 id="eventIndex">Find an event near you!</h2>
-
-<div class="panel-body, searchBars">
-    @using (Ajax.BeginForm("EventSearch", "EventStore", new AjaxOptions
-    {
-        InsertionMode = InsertionMode.Replace,
-        HttpMethod = "GET",
-        OnFailure = "searchFailed",
-        LoadingElementId = "ajax-loader",
-        UpdateTargetId = "searchresults"
-    }))
-    {
-        <input type="text" name="q" placeholder="Event Type or Event Title" />
-        <input type="text" name="p" placeholder="Location, City, or State" />
-        <input id="searchButton" type="submit" value="search" class="button" />
-        <img id="ajax-loader"
-             src=""
-             style="display:none" />
-    }
-
-</div>
 
 <div id="searchresults">
+
     <table class="table">
+        <tr>
+            <th colspan="4" id="dailyHeader">
+                Results
+            </th>
+        </tr>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.StartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartTime)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.City)
@@ -49,25 +26,23 @@
 
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.Title)*@
-                @Html.ActionLink(@item.Title, "Details", "EventStore", new { id = item.EventId }, null)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
+            <tr>
+                <td>
+                    <button id="dailyButton" class="button">
+                        @Html.ActionLink(@item.Title, "Details", "EventStore", new { id = item.EventId }, null)
+                    </button>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.StartTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-        </tr>
+            </tr>
         }
 
     </table>
@@ -76,6 +51,7 @@
 
 @section scripts
     {
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/Scripts/App/EventScripts.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 }

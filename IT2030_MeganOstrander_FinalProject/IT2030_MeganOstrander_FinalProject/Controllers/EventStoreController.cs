@@ -36,33 +36,29 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
       }
 
       //Both search methods work, just need to tell how to differentiate them!
-      public ActionResult EventSearch (string q, string p)
+      public ActionResult EventSearch (string q)
       {
 
-         if (q != null || p == null)
-         {
             var events = GetEventsByType(q);
-            return PartialView("_EventSearch", events);
-         }
-         else if(p != null || q == null)
-         {
-            var events = GetEventsByLocation(p);
-            return PartialView("_EventSearch", events);
-         }
-         else
-         {
-            //need to re route this to show an error instead!
-            var events = GetEvents(q, p); 
-            return PartialView("_EventSearch", events);
-         }
 
+            return PartialView("_EventSearch", events);
+
+      }
+
+
+      public ActionResult LocationSearch (string p)
+      {
+         
+            var events = GetEventsByLocation(p);
+
+            return PartialView("_EventSearch", events);
       }
 
 
       private List<Event> GetEventsByType(string searchString)
       {
          return db.Events
-            .Where(a => a.Type.Name.Equals(searchString) || a.Title.Equals(searchString))
+            .Where(a => a.StartDate > DateTime.Now && a.Type.Name.Equals(searchString) || a.Title.Equals(searchString))
             .OrderBy(a => a.StartDate)
             .ToList();
       }
@@ -70,34 +66,34 @@ namespace IT2030_MeganOstrander_FinalProject.Controllers
       private List<Event> GetEventsByLocation(string searchLocation)
       {
          return db.Events
-            .Where(a => a.City.Equals(searchLocation) || a.State.Equals(searchLocation))
-            .OrderBy(a => a.StartDate)
-            .ToList();
-      }
-
-      private List<Event> GetEvents(string q, string p)
-      {
-         return db.Events
-            .Where(a => a.Type.Equals(q) || a.Title.Equals(q) || a.City.Equals(p) || a.State.Equals(p))
+            .Where(a => a.StartDate > DateTime.Now && a.City.Equals(searchLocation) || a.State.Equals(searchLocation) )
             .OrderBy(a => a.StartDate)
             .ToList();
       }
 
 
-      //Both search methods work, just need to tell how to differentiate them!
+      //WORKS!
       public ActionResult Deals()
       {
-         DateTime date = DateTime.Today;
-         DateTime over = DateTime.Now; //any event that starts now or earlier
-         date = date.AddDays(3); //adds days to the current date! Had to look that up :)
+         var events = GetDeal();
 
-         var events = db.Events.Where(a => a.StartDate >= over && a.StartDate <= date)
+         return PartialView("_Deals",events);
+      }
+
+
+      private List<Event> GetDeal()
+      {
+         var now = DateTime.Now;
+         var date = DateTime.Now;
+         date = date.AddDays(2);
+
+         return db.Events
+            .Where(a => a.StartDate >=  now && a.StartDate < date)
             .OrderBy(a => a.StartDate)
             .ToList();
 
-
-         return PartialView("_EventSearch", events);
       }
+
 
 
 
